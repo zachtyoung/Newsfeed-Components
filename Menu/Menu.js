@@ -10,7 +10,6 @@ let menuItems = [
 ];
 
 /* 
-
   Step 1: Write a function that will create a menu component as seen below:
 
   <div class="menu">
@@ -33,3 +32,20 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
+const header = document.querySelector('.header');
+header.appendChild(createMenu(menuItems))
+function createMenu(menuItems) {
+ const menu = document.createElement('div');
+ const list = document.createElement('ul');
+ menu.appendChild(list);
+ menu.classList.add('menu');
+ menuItems.forEach(el =>{
+   const listItem = document.createElement("li");
+   listItem.textContent = el;
+   list.appendChild(listItem);
+ })
+ document.querySelector('.menu-button').addEventListener('click', () => {
+  menu.classList.toggle('menu--open')
+})
+return menu;
+}
